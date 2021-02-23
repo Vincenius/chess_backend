@@ -56,10 +56,9 @@ class DataGenerator(tf.keras.utils.Sequence):
       X = np.zeros((1, *self.arch["shape"], 3))
 
       pil_image = Image.open(img)
-      Image.NEAREST (0), Image.LANCZOS (1), Image.BILINEAR (2), Image.BICUBIC (3), Image.BOX (4) or Image.HAMMING (5)
+      # Image.NEAREST (0), Image.LANCZOS (1), Image.BILINEAR (2), Image.BICUBIC (3), Image.BOX (4) or Image.HAMMING (5)
       resized = pil_image.convert('RGB').resize(self.arch["shape"], Image.NEAREST)
 
-      img = image.load_img(label, target_size=self.arch["shape"])
       img_array = image.img_to_array(resized)
       img_array = self.arch["preprocessor"](img_array)
       X[0,] = img_array
@@ -110,7 +109,7 @@ def y_to_fens(y):
 
 #### TEST ####
 
-# validation_generator = DataGenerator()
+validation_generator = DataGenerator()
 
 # label = "batch-1\\RRrR2NN-1K1qnkBp-N1kqpnRr-q2qKNb1-n3B1Q1-N1PkNN1K-r2r2n1-P3K1Kq.jpg"
 
